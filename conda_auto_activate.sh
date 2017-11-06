@@ -14,13 +14,11 @@ function _conda_auto_activate() {
 
     # Check to see if already activated to avoid redundant activating
     if [[ $PATH == *"$ENV"* ]]; then
-      echo "Conda env '$ENV' already activated."
+      #echo "Conda env '$ENV' already activated."
     else
       source activate $ENV
     fi
   fi
 }
 
-function chpwd() {
-  _conda_auto_activate
-}
+chpwd_functions=(${chpwd_functions[@]} "_conda_auto_activate")
